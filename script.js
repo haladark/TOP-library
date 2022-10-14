@@ -1,12 +1,13 @@
+
 //array to store books information
 let myLibrary = [];
 
 //Book objects constructor function
 function Book(title,author,pages,read){
-  this.title = title,
-  this.author = author,
-  this.pages = pages,
-  this.read = read;
+  this.Title = title,
+  this.Author = author,
+  this.Pages = pages,
+  this.Read = read;
 
 }
 
@@ -25,8 +26,8 @@ function displayBooksOnPage() {
     const card = document.createElement("div");
     card.classList.add("card");
     books.appendChild(card);
-    for (let key in myLibrary) {
-      console.log(`${key}: ${myLibrary[key]}`);
+    for (let key in myLibrary) { // use for...in for iterating over an object
+      //console.log(`${key}: ${myLibrary[key]}`);
       const para = document.createElement("p");
       para.textContent = (`${key}: ${myLibrary[key]}`);
       card.appendChild(para);
@@ -35,7 +36,14 @@ function displayBooksOnPage() {
 
 }
 
-addBookToLibrary("book1","author1","234 pages", "not read");
-addBookToLibrary("book2","author2","345 pages", "not read");
-addBookToLibrary("book3","author3","734 pages", "not read");
+//function to prompt Add Book Form
+
+
+
+
+
+//main
+addBookToLibrary("Book1","Author1","234 pages", "not read");
+addBookToLibrary("Book2","Author2","345 pages", "not read");
+addBookToLibrary("Book3","Author3","734 pages", "not read");
 displayBooksOnPage();
