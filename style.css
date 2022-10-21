@@ -1,7 +1,4 @@
-/*status:built a form 
-  step 1: need to style the form with color palette and the form width and submit --> centered
-  Step 2: Get the form data linked to the addBookToLibrary function
-*/
+
 :root{
   --blue:#2cb9c3;
   --hoverBlue:#28a7b0;
@@ -17,16 +14,13 @@
   --black:rgba(0,0,0,255);
 }
 *{
-  margin:0;
+  margin:5px; /*make it 0*/
   padding:0;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   letter-spacing: 1px;
 }
-ul{
-  list-style: none;
-}
-
 /*left*/
+/*
 #form{
   display: flex;
   flex-direction: column;
@@ -37,12 +31,7 @@ ul{
   width:80%;
   padding:18px;
 }
-span[id=decoration-new]{
-  color:var(--blue);
-}
-.logo>span{
-  color:var(--black);
-}
+*/
 label{
   color:white;
   font-size: 1.1rem;
@@ -58,57 +47,79 @@ input{
   box-sizing: border-box;
   font-size: 1rem;
 }
-input[type=submit] {
-  width: 50%;
-  background-color:var(--blue);
-  color: white;
-  font-weight: 900;
-  font-size: 1.5rem;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 .logo{
+  border: 2px solid green;/*delete*/
   grid-area: 1/1/2/2;
   background-color: var(--turquosie2);
   color: var(--offWhite);
 }
-.logo>p{
+.logo>h1{
   text-align: center;
-  margin-top: 16px;
+  margin-top: 32px;
   font-size: 3.5rem;
   font-weight: bold;
 }
-.logo>p>span{
+.logo>h1>span{
   color: var(--grey3);
 }
-.sidebar{
-  grid-area: 2/1/3/2;
-  background-color: var(--turquosie2);
+
+#add-book-form,button{
+background-color: var(--turquosie3);
+}
+button{
+  padding:12px;
+  border: 2px solid white;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.add-book-btn{
+  border: 8px solid pink;/*delete*/
+}
+.submit-btn,.reset-btn{
+ max-width: 150px;
+}
+.form{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  /*justify-content: flex-start; - -> return this in when adding status html element*/
+  grid: 2/1/3/2;
+  border: 2px solid purple;/*delete*/
+}
+
+#add-book-form{
+  border: 2px solid blue;/*delete*/
+  display: flex;
+  flex-direction: column;
 
 }
-input[type=submit]:hover {
-  background-color: var(--hoverBlue);
-}
 
-/*right*/
 
 .container{
   display: grid;
-  grid-template: 1.7fr 8fr 0.3fr/ 1fr 2fr;/*make a grid on container and add status div to html*/
+  grid-template: 1fr 5fr/ 1fr 3fr;/*make a grid on container and add status div to html*/
+  border: 2px solid red;/*delete*/
   background-color: var(--backgroundColor);
   min-height: 100vh; /*Tried to remove vertical scrollbar when one page --> failed*/
 }
-.library{
-  grid-area: 1/2/3/3;
-  padding: 14px;
+
+
+/*right*/
+
+
+.books-heading{
+  border: 2px solid blue; /*Delete*/
+  grid: 1/2/2/3;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.books-heading >h1{
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--grey3);
 }
 h1{
   margin: 20px 0px;
@@ -117,12 +128,16 @@ h1{
   font-weight: bold;
 }
 .card{
-  border: 2px solid grey;
+  border: 4px solid grey;
   padding: 8px;
   margin:6px;
+  font-size: 1.2rem;
 }
+
 .books{
-  margin:18px 24px 0px 8px;
+  grid:2/2/3/3;
+  border: 2px solid orange;/*delete*/
+  /*margin:18px 24px 0px 8px;  return this*/
   display: grid;
   grid-template: repeat(3,1fr)/repeat(3,1fr);
   grid-auto-flow: row;
@@ -131,6 +146,11 @@ h1{
   place-items: center stretch;
   place-content: center stretch;
 }
+
+
+
+
+/*
 .footer{
   grid-area: 3/1/4/3;
   background:var(--grey3);
@@ -140,3 +160,9 @@ h1{
   padding: 8px;
   margin-bottom: 0;
 }
+
+
+input[type=submit]:hover {
+  background-color: var(--hoverBlue);
+}
+

@@ -15,13 +15,22 @@ function Book(title,author,pages,read){
 function addBookToLibrary(title, author,pages,read) {
   let book = new Book(title, author, pages, read);
   myLibrary.push(book);
-
+  displayBooksOnPage();
 }
 
 //function to loop myLibrary and display each book
 
 function displayBooksOnPage() {
-  const books = document.querySelector(".books");
+  //remove previous divs on page
+  const removedBooks = document.querySelector('.books');
+  removedBooks.remove();
+
+  const container = document.querySelector('.container');
+  let books = document.createElement("div");
+  books.classList.add("books");
+  container.appendChild(books);
+
+  books = document.querySelector(".books");
   myLibrary.forEach(myLibrary => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -30,20 +39,34 @@ function displayBooksOnPage() {
       //console.log(`${key}: ${myLibrary[key]}`);
       const para = document.createElement("p");
       para.textContent = (`${key}: ${myLibrary[key]}`);
-      card.appendChild(para);
+      card.appendChild(para); 
     }
   })
 
 }
 
-//function to prompt Add Book Form
+//function to submit New Book Form
+  const submitBtn = document.querySelector('.submit-btn');
+  submitBtn.addEventListener('click', getFormData);
 
+  function getFormData () {
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let read = document.getElementById('read').value;
+    if ((title=='')||(author=='')||(pages=='')||(read=='')){
+        alert('enter all fields');
+        return;
+    }
+    addBookToLibrary(title,author,pages,read); 
+    document.getElementById('add-book').reset(); 
+  } 
 
+  const resetBtn= document.querySelector('.reset-btn')
+  resetBtn.addEventListener('click', formReset);
 
-
+  function formReset(){
+    document.getElementById('add-book').reset();
+  }
 
 //main
-addBookToLibrary("Book1","Author1","234 pages", "not read");
-addBookToLibrary("Book2","Author2","345 pages", "not read");
-addBookToLibrary("Book3","Author3","734 pages", "not read");
-displayBooksOnPage();
