@@ -76,7 +76,7 @@ button{
 .add-book-btn{
   border: 8px solid pink;/*delete*/
 }
-.submit-btn,.reset-btn{
+.submit-btn,.reset-btn, .close-btn{
  max-width: 150px;
 }
 .form{
@@ -90,7 +90,7 @@ button{
 
 #add-book-form{
   border: 2px solid blue;/*delete*/
-  display: flex;
+  display: none;
   flex-direction: column;
 
 }

@@ -49,6 +49,7 @@ function displayBooksOnPage() {
   const submitBtn = document.querySelector('.submit-btn');
   submitBtn.addEventListener('click', getFormData);
 
+
   function getFormData () {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
@@ -58,15 +59,32 @@ function displayBooksOnPage() {
         alert('enter all fields');
         return;
     }
-    addBookToLibrary(title,author,pages,read); 
-    document.getElementById('add-book').reset(); 
+    addBookToLibrary(title,author,pages,read);
+    resetForm();
+    hideForm();
   } 
 
   const resetBtn= document.querySelector('.reset-btn')
-  resetBtn.addEventListener('click', formReset);
+  resetBtn.addEventListener('click', resetForm);
 
-  function formReset(){
+  const closeBtn = document.querySelector('.close-btn');
+  closeBtn.addEventListener('click',closeForm);
+
+  const addBookBtn = document.querySelector('.add-book-btn');
+  addBookBtn.addEventListener('click', revealForm);
+
+
+  function revealForm(){
+    document.getElementById('add-book-form').style.display='flex';
+  }
+  function resetForm(){
     document.getElementById('add-book').reset();
   }
+  function closeForm(){ 
+    resetForm();
+    document.getElementById('add-book-form').style.display='none';
+  }
 
-//main
+
+
+
