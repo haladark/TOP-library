@@ -1,5 +1,5 @@
 
-//array to store books information
+//array to store books information as objects
 let myLibrary = [];
 
 //Book objects constructor function
@@ -11,13 +11,12 @@ function Book(title,author,pages,read){
 
 }
 
-//function to take user input and store the new book objects in myLibrary
+//Take user input and store the new book object in myLibrary then display myLibrary
 function addBookToLibrary(title, author,pages,read) {
   let book = new Book(title, author, pages, read);
   myLibrary.push(book);
   displayBooksOnPage();
 }
-
 //function to loop myLibrary and display each book
 
 function displayBooksOnPage() {
@@ -31,24 +30,62 @@ function displayBooksOnPage() {
   container.appendChild(books);
 
   books = document.querySelector(".books");
-  myLibrary.forEach(myLibrary => {
+  myLibrary.forEach((myLibrary,idx) => {
     const card = document.createElement("div");
     card.classList.add("card");
     books.appendChild(card);
+
+    const info = document.createElement("div");
+    info.classList.add("info");
+    card.appendChild(info);
+    const actions = document.createElement("div");
+    actions.classList.add("actions");
+    card.appendChild(actions);
+
     for (let key in myLibrary) { // use for...in for iterating over an object
-      //console.log(`${key}: ${myLibrary[key]}`);
       const para = document.createElement("p");
       para.textContent = (`${key}: ${myLibrary[key]}`);
-      card.appendChild(para); 
+      info.appendChild(para); 
     }
-  })
 
+
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtn.textContent = "Delete"; 
+    deleteBtn.dataset.index = idx;
+    actions.appendChild(deleteBtn);
+    deleteBtn.addEventListener('click', (e)=>{
+      const cardIdx = parseInt(e.target.dataset.index);
+      deleteCard(cardIdx);
+        });
+
+
+    const markbook = document.createElement('div');
+    markbook.classList.add('mark-as-read');
+    markbook.textContent = 'Mark as Read';
+    actions.appendChild(markbook);
+
+    const readBtn = document.createElement("button");
+    readBtn.classList.add('read-btn','material-icons-outlined');
+    readBtn.textContent = 'done'; 
+    readBtn.dataset.index = idx;
+    markbook.appendChild(readBtn);
+    readBtn.addEventListener('click', (e)=>{
+      const cardIdx = parseInt(e.target.dataset.index);
+      toggleRead(cardIdx,readBtn);
+        });
+  })
 }
 
-//function to submit New Book Form
   const submitBtn = document.querySelector('.submit-btn');
-  submitBtn.addEventListener('click', getFormData);
-
+    submitBtn.addEventListener('click', getFormData);
+  const resetBtn= document.querySelector('.reset-btn')
+    resetBtn.addEventListener('click', resetForm);
+  const closeBtn = document.querySelector('.close-btn');
+    closeBtn.addEventListener('click',closeForm);
+  const addBookBtn = document.querySelector('.add-book-btn');
+    addBookBtn.addEventListener('click', revealForm);
 
   function getFormData () {
     let title = document.getElementById('title').value;
@@ -58,22 +95,11 @@ function displayBooksOnPage() {
     if ((title=='')||(author=='')||(pages=='')||(read=='')){
         alert('enter all fields');
         return;
-    }
+    } 
     addBookToLibrary(title,author,pages,read);
     resetForm();
-    hideForm();
+    closeForm();
   } 
-
-  const resetBtn= document.querySelector('.reset-btn')
-  resetBtn.addEventListener('click', resetForm);
-
-  const closeBtn = document.querySelector('.close-btn');
-  closeBtn.addEventListener('click',closeForm);
-
-  const addBookBtn = document.querySelector('.add-book-btn');
-  addBookBtn.addEventListener('click', revealForm);
-
-
   function revealForm(){
     document.getElementById('add-book-form').style.display='flex';
   }
@@ -85,6 +111,17 @@ function displayBooksOnPage() {
     document.getElementById('add-book-form').style.display='none';
   }
 
+  //Remove book from library
+  function deleteCard(targetCard){
+    myLibrary.splice(targetCard,1);
+    displayBooksOnPage();
+  }
+  function toggleRead(idx,btn){
+    //only change color at this point. Problem: when deleting any card all read-btn back to default not-read status
+    btn.classList.toggle('read');
+    console.log('toggle');
+
+  }
 
 
 

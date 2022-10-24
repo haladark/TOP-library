@@ -1,4 +1,3 @@
-
 :root{
   --blue:#2cb9c3;
   --hoverBlue:#28a7b0;
@@ -11,158 +10,210 @@
   --turquosie3:rgba(72,113,119,255);
   --turquosie4:rgba(98,119,124,255);
   --grey3:rgba(74,78,89,255);
-  --black:rgba(0,0,0,255);
+  --black:rgba(0, 0, 0, 0.936);
 }
 *{
-  margin:5px; /*make it 0*/
+  margin:0;
   padding:0;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   letter-spacing: 1px;
 }
-/*left*/
-/*
-#form{
-  display: flex;
-  flex-direction: column;
-  border: 2px solid rgb(199, 198, 198);
-  border-radius: 8px;
-  align-items: center;
-  background: var(--grey3);
-  width:80%;
-  padding:18px;
-}
-*/
+/*left*/ 
 label{
-  color:white;
-  font-size: 1.1rem;
+  color:var(--turquosie3);
+  font-size: 1.3rem;
   font-weight: bold;
 }
 input{
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 0 0 12px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid var(--grey2);
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 1rem;
 }
+input:focus{
+  outline: none;
+  border: 2px solid var(--grey2);
+}
 .logo{
-  border: 2px solid green;/*delete*/
+  border: 8px solid var(--black);
+  border-radius: 20px;
   grid-area: 1/1/2/2;
   background-color: var(--turquosie2);
   color: var(--offWhite);
-}
-.logo>h1{
-  text-align: center;
-  margin-top: 32px;
-  font-size: 3.5rem;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
   font-weight: bold;
 }
 .logo>h1>span{
   color: var(--grey3);
 }
-
-#add-book-form,button{
-background-color: var(--turquosie3);
+#add-book-form, button{
+background-color: var(--turquosie2);
 }
-button{
+button{   
   padding:12px;
   border: 2px solid white;
-  color: white;
+  border-radius: 10px;
+  color: var(--grey2);
   font-size: 1.5rem;
   font-weight: bold;
-}
+  align-self: center;
+  min-width: 150px;
+}  
 .add-book-btn{
-  border: 8px solid pink;/*delete*/
+  width: auto;
+  background-color: var(--turquosie3);
+  color: white;
+  margin-top: 24px;
+  padding:12px;
+  border: 4px solid /* var(--grey3) */;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-self: center;
+
 }
 .submit-btn,.reset-btn, .close-btn{
  max-width: 150px;
+ padding:12px;
+ border: 2px solid white;
+ color: white;
+ font-size: 1.5rem;
+ background-color: var(--turquosie3);
+ margin:5px;
 }
 .form{
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  /*justify-content: flex-start; - -> return this in when adding status html element*/
   grid: 2/1/3/2;
-  border: 2px solid purple;/*delete*/
+  border: 6px solid var(--grey3);
+  border-radius: 20px;
 }
-
+#add-book{
+  margin-bottom: 16px;
+}
 #add-book-form{
-  border: 2px solid blue;/*delete*/
+  background-color: var(--offWhite);
+  border: 4px solid var(--turquosie3);
+  border-radius: 15px;
+  margin: 10px 20px;
+  padding:16px;
   display: none;
   flex-direction: column;
-
 }
-
-
 .container{
   display: grid;
-  grid-template: 1fr 5fr/ 1fr 3fr;/*make a grid on container and add status div to html*/
-  border: 2px solid red;/*delete*/
+  grid-template: 1fr 5fr/ 1fr 3fr;
   background-color: var(--backgroundColor);
   min-height: 100vh; /*Tried to remove vertical scrollbar when one page --> failed*/
+  background-color: var(--turquosie2);
+  padding:12px 18px;
+  gap:8px;
 }
-
-
 /*right*/
-
-
 .books-heading{
-  border: 2px solid blue; /*Delete*/
   grid: 1/2/2/3;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 6px solid var(--grey3);
+  border-radius: 20px;
 }
 .books-heading >h1{
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--offWhite);
+  margin-top: 10px;
+  margin-right: 40px;
+}
+.books{
+  background-color: white;
+  border: 8px solid var(--black);
+  border-radius: 20px;
+  grid:2/2/3/3;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: minmax(250px, auto);
+  gap: 16px;
+  justify-content: flex-start;
+/*   margin: 0 40px 10px 10px; */
+  padding:20px 8px;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  border: 8px solid grey;
+  border-radius: 15px;
+  padding: 12px;
+  margin:10px 20px;
+  font-size: 1.4rem;
+  justify-content: space-between;
+  max-width: 300px;
+  max-height: 200px;
+}
+.info>p{
+   margin:8px;
+  }
+.info{
+  font-size: 1rem;
   font-weight: bold;
   color: var(--grey3);
 }
-h1{
-  margin: 20px 0px;
-  text-align: center;
-  font-size: 2rem;
+.actions{
+  display: flex;
+}
+.delete-btn{
+  color:white;
+  border-radius: 10px;
+  font-size: 1rem;
   font-weight: bold;
+  padding:8px;
+  align-self: center;
+  min-width: 100px;
+  flex-grow: 1;
 }
-.card{
-  border: 4px solid grey;
-  padding: 8px;
-  margin:6px;
-  font-size: 1.2rem;
+.mark-as-read{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--grey2);
+  align-items: center;
+  gap:6px;
+  flex-grow: 4;
+}
+.read-btn{
+  font-size: 1.1rem;
+  font-weight: bold;
+  align-self: center;
+  border-radius: 50%;
+  background-color: var(--grey2);
+  color:rgba(255, 255, 255, 0.693);
+  border-style: none;
+  padding:8px;
+  min-width: 14px;
+}
+.read-btn.read{
+  background-color: var(--turquosie2);
 }
 
-.books{
-  grid:2/2/3/3;
-  border: 2px solid orange;/*delete*/
-  /*margin:18px 24px 0px 8px;  return this*/
-  display: grid;
-  grid-template: repeat(3,1fr)/repeat(3,1fr);
-  grid-auto-flow: row;
-  grid-auto-rows: 1fr ;/*not sure*/
-  gap:14px;
-  place-items: center stretch;
-  place-content: center stretch;
-}
-
-
-
-
-/*
 .footer{
   grid-area: 3/1/4/3;
-  background:var(--grey3);
+  background-color:var(--black);
   color: white;
   font-size: 0.8rem;
   text-align: center;
-  padding: 8px;
+  padding: 6px;
   margin-bottom: 0;
 }
 
-
-input[type=submit]:hover {
-  background-color: var(--hoverBlue);
-}
 
