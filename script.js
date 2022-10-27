@@ -97,7 +97,7 @@ function getFormData () {
   let readOptions = document.getElementById('read').options;
   let read = readOptions[readIdx].text;
     if ((title=='')||(author=='')||(pages=='')||(read=='')){
-      alert('enter all fields');
+      alert('Please enter correct information in all fields');
       return;
     }
   addBookToLibrary(title,author,pages,read);
