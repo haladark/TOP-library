@@ -1,6 +1,16 @@
+/*Created by Halla Idris as Project Library of The Oden Project curriculum*/
 
 //array to store books information as objects
 let myLibrary = [];
+
+const submitBtn = document.querySelector('.submit-btn');
+submitBtn.addEventListener('click', getFormData);
+const resetBtn= document.querySelector('.reset-btn')
+resetBtn.addEventListener('click', resetForm);
+const closeBtn = document.querySelector('.close-btn');
+closeBtn.addEventListener('click',closeForm);
+const addBookBtn = document.querySelector('.add-book-btn');
+addBookBtn.addEventListener('click', revealForm);
 
 //Book objects constructor function
 function Book(title,author,pages,read){
@@ -11,16 +21,14 @@ function Book(title,author,pages,read){
 
 }
 
-//Take user input and store the new book object in myLibrary then display myLibrary
 function addBookToLibrary(title, author,pages,read) {
   let book = new Book(title, author, pages, read);
   myLibrary.push(book);
   displayBooksOnPage();
 }
-//function to loop myLibrary and display each book
 
 function displayBooksOnPage() {
-  //remove previous divs on page
+
   const removedBooks = document.querySelector('.books');
   removedBooks.remove();
 
@@ -30,7 +38,7 @@ function displayBooksOnPage() {
   container.appendChild(books);
 
   books = document.querySelector(".books");
-  myLibrary.forEach((myLibrary,idx) => {
+  myLibrary.forEach((myLibrarybooks,idx) => {
     const card = document.createElement("div");
     card.classList.add("card");
     books.appendChild(card);
@@ -42,13 +50,11 @@ function displayBooksOnPage() {
     actions.classList.add("actions");
     card.appendChild(actions);
 
-    for (let key in myLibrary) { // use for...in for iterating over an object
+    for (let key in myLibrarybooks) { 
       const para = document.createElement("p");
-      para.textContent = (`${key}: ${myLibrary[key]}`);
-      info.appendChild(para); 
+      para.textContent = (`${key}: ${myLibrarybooks[key]}`);
+      info.appendChild(para);
     }
-
-
 
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete-btn");
@@ -57,9 +63,8 @@ function displayBooksOnPage() {
     actions.appendChild(deleteBtn);
     deleteBtn.addEventListener('click', (e)=>{
       const cardIdx = parseInt(e.target.dataset.index);
-      deleteCard(cardIdx);
+      deleteBook(cardIdx);
         });
-
 
     const markbook = document.createElement('div');
     markbook.classList.add('mark-as-read');
@@ -70,6 +75,11 @@ function displayBooksOnPage() {
     readBtn.classList.add('read-btn','material-icons-outlined');
     readBtn.textContent = 'done'; 
     readBtn.dataset.index = idx;
+    if ( (myLibrary[idx].Read) == 'Yes'){
+      readBtn.classList.add('read');
+    } else {
+      readBtn.classList.remove('read'); 
+    }
     markbook.appendChild(readBtn);
     readBtn.addEventListener('click', (e)=>{
       const cardIdx = parseInt(e.target.dataset.index);
@@ -78,50 +88,49 @@ function displayBooksOnPage() {
   })
 }
 
-  const submitBtn = document.querySelector('.submit-btn');
-    submitBtn.addEventListener('click', getFormData);
-  const resetBtn= document.querySelector('.reset-btn')
-    resetBtn.addEventListener('click', resetForm);
-  const closeBtn = document.querySelector('.close-btn');
-    closeBtn.addEventListener('click',closeForm);
-  const addBookBtn = document.querySelector('.add-book-btn');
-    addBookBtn.addEventListener('click', revealForm);
+function getFormData () {
+  let title = document.getElementById('title').value;
+  let author = document.getElementById('author').value;
+  let pages = document.getElementById('pages').value;
 
-  function getFormData () {
-    let title = document.getElementById('title').value;
-    let author = document.getElementById('author').value;
-    let pages = document.getElementById('pages').value;
-    let read = document.getElementById('read').value;
+  let readIdx = document.getElementById('read').selectedIndex;
+  let readOptions = document.getElementById('read').options;
+  let read = readOptions[readIdx].text;
     if ((title=='')||(author=='')||(pages=='')||(read=='')){
-        alert('enter all fields');
-        return;
-    } 
-    addBookToLibrary(title,author,pages,read);
-    resetForm();
-    closeForm();
-  } 
-  function revealForm(){
-    document.getElementById('add-book-form').style.display='flex';
-  }
-  function resetForm(){
-    document.getElementById('add-book').reset();
-  }
-  function closeForm(){ 
-    resetForm();
-    document.getElementById('add-book-form').style.display='none';
-  }
+      alert('enter all fields');
+      return;
+    }
+  addBookToLibrary(title,author,pages,read);
+  resetForm();
+  closeForm();
+} 
 
-  //Remove book from library
-  function deleteCard(targetCard){
+function revealForm(){
+  document.getElementById('add-book-form').style.display='flex';
+}
+
+function resetForm(){
+  document.getElementById('add-book').reset();
+}
+
+function closeForm(){ 
+  resetForm();
+  document.getElementById('add-book-form').style.display='none';
+}
+
+function deleteBook(targetCard){
     myLibrary.splice(targetCard,1);
     displayBooksOnPage();
-  }
-  function toggleRead(idx,btn){
-    //only change color at this point. Problem: when deleting any card all read-btn back to default not-read status
-    btn.classList.toggle('read');
-    console.log('toggle');
+}
 
-  }
-
-
+function toggleRead(idx,btn){
+  let toggleRead = myLibrary[idx].Read;
+  if (toggleRead == 'No'){
+    myLibrary[idx].Read = 'Yes';
+    } else {
+      myLibrary[idx].Read = 'No';
+    }
+  btn.classList.toggle('read');
+  displayBooksOnPage();
+}
 

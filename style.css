@@ -1,3 +1,5 @@
+/*Created by Halla Idris as Project Library of The Oden Project curriculum*/
+
 :root{
   --blue:#2cb9c3;
   --hoverBlue:#28a7b0;
@@ -15,41 +17,76 @@
 *{
   margin:0;
   padding:0;
+  box-sizing: border-box;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  color: var(--grey2); /*to change the placeholder's color of the select tag */
 }
+.container{
+  display: grid;
+  grid-template: 1fr 5fr/ 1fr 3fr;
+  background-color: var(--backgroundColor);
+  background-color: var(--turquosie2);
+  padding:12px 18px;
+  gap:8px;
+  min-height: 97.2vh; /*Still couldn't figure out how to fix the vertical scrollbar*/
+}
+
 /*left*/ 
 label{
   color:var(--turquosie3);
   font-size: 1.3rem;
   font-weight: bold;
 }
-input{
+input,select{
   width: 100%;
-  padding: 12px 20px;
+  padding: 8px 14px;
   margin: 0 0 12px 0;
   display: inline-block;
   border: 1px solid var(--grey2);
   border-radius: 4px;
   box-sizing: border-box;
+  font-size: 0.9rem;
+  background-color: var(--offWhite);
+  font-weight: 300;
+}
+input,p{
+  color:var(--grey3);
+}
+/*select[data-chosen] helps overcome select default styling issue*/
+select[data-chosen],::placeholder, option:first-of-type{
+  color:var(--grey2);
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+select[data-chosen='yes'],select[data-chosen='no']{
+  color:var(--grey3);
+}
+option{
+  color:var(--grey3);
+  font-weight: bold;
   font-size: 1rem;
 }
-input:focus{
+
+input:focus, select:focus{
   outline: none;
-  border: 2px solid var(--grey2);
+  border: 2px solid var(--grey3);
 }
+
 .logo{
   border: 8px solid var(--black);
   border-radius: 20px;
   grid-area: 1/1/2/2;
   background-color: var(--turquosie2);
-  color: var(--offWhite);
   padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   font-weight: bold;
+}
+.logo>h1{
+  color: var(--offWhite);
 }
 .logo>h1>span{
   color: var(--grey3);
@@ -73,7 +110,7 @@ button{
   color: white;
   margin-top: 24px;
   padding:12px;
-  border: 4px solid /* var(--grey3) */;
+  border: 4px solid;
   border-radius: 15px;
   font-size: 1.5rem;
   font-weight: bold;
@@ -109,15 +146,7 @@ button{
   display: none;
   flex-direction: column;
 }
-.container{
-  display: grid;
-  grid-template: 1fr 5fr/ 1fr 3fr;
-  background-color: var(--backgroundColor);
-  min-height: 100vh; /*Tried to remove vertical scrollbar when one page --> failed*/
-  background-color: var(--turquosie2);
-  padding:12px 18px;
-  gap:8px;
-}
+
 /*right*/
 .books-heading{
   grid: 1/2/2/3;
@@ -145,7 +174,6 @@ button{
   grid-auto-rows: minmax(250px, auto);
   gap: 16px;
   justify-content: flex-start;
-/*   margin: 0 40px 10px 10px; */
   padding:20px 8px;
 }
 .card{
@@ -157,16 +185,17 @@ button{
   margin:10px 20px;
   font-size: 1.4rem;
   justify-content: space-between;
-  max-width: 300px;
-  max-height: 200px;
+  max-width: 350px;
+  max-height: 250px;
 }
 .info>p{
    margin:8px;
-  }
+}
 .info{
   font-size: 1rem;
   font-weight: bold;
   color: var(--grey3);
+  overflow:auto;
 }
 .actions{
   display: flex;
@@ -202,10 +231,9 @@ button{
   padding:8px;
   min-width: 14px;
 }
-.read-btn.read{
+.read-btn.read.material-icons-outlined{
   background-color: var(--turquosie2);
 }
-
 .footer{
   grid-area: 3/1/4/3;
   background-color:var(--black);
@@ -215,5 +243,3 @@ button{
   padding: 6px;
   margin-bottom: 0;
 }
-
-

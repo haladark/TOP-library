@@ -1,3 +1,5 @@
+<!--Created by Halla Idris as Project Library of The Oden Project curriculum-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +14,7 @@
 
  
   <div class="container">
-    <div class="logo"> <!--class form-heading-->
+    <div class="logo">
       <h1><span>My</span>Library</h1>
     </div>
     <div class="books-heading" >
@@ -21,16 +23,20 @@
 
     <div class="form">
       <button class="add-book-btn">Add New Book</button>
-      <div id="add-book-form">   <!--style="display:none"-->
+      <div id="add-book-form">
         <form id="add-book">
           <label for="Title">Title</label>
-          <input type="text" id="title" name="Title">
+          <input type="text" id="title" name="Title" placeholder="Enter book title">
           <label for="Author">Author</label>
-          <input type="text" id="author" name="Author">
+          <input type="text" id="author" name="Author" placeholder="Enter author name">
           <label for="Pages">Pages</label>
-          <input type="text" id="pages" name="Pages"> <!--Make it type=number-->
+          <input type="number" id="pages" name="Pages" placeholder="How may pages is the book?">
           <label for="Read">Read</label>
-          <input type="text" id="read" name="Read">
+          <select id="read" name="Read" onchange="this.dataset.chosen=this.value;">
+            <option value="" disabled selected>Select your Option</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
         </form>
         <button type="submit" class="submit-btn">Submit</button>
         <button type="reset" class="reset-btn">Reset</button>
