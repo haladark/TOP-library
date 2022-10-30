@@ -1,18 +1,16 @@
 /*Created by Halla Idris as Project Library of The Oden Project curriculum*/
 
 :root{
-  --blue:#2cb9c3;
-  --hoverBlue:#28a7b0;
   /*Color Palette*/
   --offWhite:rgba(255,255,255,255);
-  --grey1:rgba(174,184,185,255);
   --grey2:rgba(139,149,150,255);
-  --turquosie1:rgba(161,216,219,255);
-  --turquosie2:rgba(118,178,188,255);
-  --turquosie3:rgba(72,113,119,255);
-  --turquosie4:rgba(98,119,124,255);
-  --grey3:rgba(74,78,89,255);
-  --black:rgba(0, 0, 0, 0.936);
+  --oxfordBlue:#072448;
+  --background1:#f9eddde3;
+  --background2:#ffd7a2;
+  --linesColor:#264e70;
+  --darkGreen:#679186;
+  --lightGreen:#e2e5e4bb;
+
 }
 *{
   margin:0;
@@ -25,16 +23,15 @@
 .container{
   display: grid;
   grid-template: 1fr 5fr/ 1fr 3fr;
-  background-color: var(--backgroundColor);
-  background-color: var(--turquosie2);
+  background-color: var(--lightGreen);
   padding:12px 18px;
   gap:8px;
-  min-height: 97.2vh; /*Still couldn't figure out how to fix the vertical scrollbar*/
+  min-height: 97.2vh;
 }
 
 /*left*/ 
 label{
-  color:var(--turquosie3);
+  color:var(--darkGreen);
   font-size: 1.3rem;
   font-weight: bold;
 }
@@ -70,14 +67,14 @@ option{
 
 input:focus, select:focus{
   outline: none;
-  border: 2px solid var(--grey3);
+  border: 2px solid var(--grey2);
 }
 
 .logo{
-  border: 8px solid var(--black);
+  border: 8px solid var(--darkGreen);
   border-radius: 20px;
   grid-area: 1/1/2/2;
-  background-color: var(--turquosie2);
+  background-color: var(--offWhite);
   padding: 0 16px;
   display: flex;
   align-items: center;
@@ -86,19 +83,19 @@ input:focus, select:focus{
   font-weight: bold;
 }
 .logo>h1{
-  color: var(--offWhite);
+  color: var(--linesColor);
 }
 .logo>h1>span{
-  color: var(--grey3);
+  color: var(--background2);
 }
 #add-book-form, button{
-background-color: var(--turquosie2);
+background-color: var(--darkGreen);
 }
 button{   
   padding:12px;
-  border: 2px solid white;
+  border: 2px solid var(--darkGreen);
   border-radius: 10px;
-  color: var(--grey2);
+  color: var(--darkGreen);
   font-size: 1.5rem;
   font-weight: bold;
   align-self: center;
@@ -106,11 +103,11 @@ button{
 }  
 .add-book-btn{
   width: auto;
-  background-color: var(--turquosie3);
-  color: white;
+  background-color: var(--darkGreen);
+  color: var(--offWhite);
   margin-top: 24px;
   padding:12px;
-  border: 4px solid;
+  border: 4px solid var(--offWhite);
   border-radius: 15px;
   font-size: 1.5rem;
   font-weight: bold;
@@ -122,8 +119,8 @@ button{
  padding:12px;
  border: 2px solid white;
  color: white;
- font-size: 1.5rem;
- background-color: var(--turquosie3);
+ font-size: 1.2rem;
+ background-color: var(--darkGreen);
  margin:5px;
 }
 .form{
@@ -131,15 +128,15 @@ button{
   flex-direction: column;
   align-items: stretch;
   grid: 2/1/3/2;
-  border: 6px solid var(--grey3);
+  border: 6px solid var(--darkGreen);
+  background-color: var(--offWhite);
   border-radius: 20px;
 }
 #add-book{
   margin-bottom: 16px;
 }
 #add-book-form{
-  background-color: var(--offWhite);
-  border: 4px solid var(--turquosie3);
+  background-color: var(--background1);
   border-radius: 15px;
   margin: 10px 20px;
   padding:16px;
@@ -153,20 +150,21 @@ button{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 6px solid var(--grey3);
+  border: 6px solid var(--darkGreen);
+  background-color: var(--offWhite);
   border-radius: 20px;
 }
 .books-heading >h1{
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
-  color: var(--offWhite);
+  color: var(--linesColor);
   margin-top: 10px;
   margin-right: 40px;
 }
 .books{
-  background-color: white;
-  border: 8px solid var(--black);
+  background-image: linear-gradient(var(--background2), var(--lightGreen));
+  border: 8px solid var(--darkGreen);
   border-radius: 20px;
   grid:2/2/3/3;
   display: grid;
@@ -179,7 +177,9 @@ button{
 .card{
   display: flex;
   flex-direction: column;
-  border: 8px solid grey;
+  border: 8px solid var(--linesColor);
+  color:var(--linesColor);
+  background-color: var(--offWhite);
   border-radius: 15px;
   padding: 12px;
   margin:10px 20px;
@@ -202,6 +202,8 @@ button{
 }
 .delete-btn{
   color:white;
+  background-color: var(--linesColor);
+  border: none;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: bold;
@@ -225,18 +227,18 @@ button{
   font-weight: bold;
   align-self: center;
   border-radius: 50%;
-  background-color: var(--grey2);
-  color:rgba(255, 255, 255, 0.693);
+  background-color: rgba(179, 179, 179, 0.727);
+  color:white;
   border-style: none;
   padding:8px;
   min-width: 14px;
 }
 .read-btn.read.material-icons-outlined{
-  background-color: var(--turquosie2);
+  background-color: var(--darkGreen);
 }
 .footer{
   grid-area: 3/1/4/3;
-  background-color:var(--black);
+  background-color:var(--oxfordBlue);
   color: white;
   font-size: 0.8rem;
   text-align: center;
