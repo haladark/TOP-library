@@ -37,15 +37,15 @@ label{
 }
 input,select{
   width: 100%;
-  padding: 8px 14px;
+  padding: 8px 6px;
   margin: 0 0 12px 0;
   display: inline-block;
   border: 1px solid var(--grey2);
   border-radius: 4px;
   box-sizing: border-box;
-  font-size: 0.9rem;
+  font-size: 1rem;
   background-color: var(--offWhite);
-  font-weight: 300;
+  font-weight: bold;
 }
 input,p{
   color:var(--grey3);
@@ -53,8 +53,8 @@ input,p{
 /*select[data-chosen] helps overcome select default styling issue*/
 select[data-chosen],::placeholder, option:first-of-type{
   color:var(--grey2);
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: bold;
 }
 select[data-chosen='yes'],select[data-chosen='no']{
   color:var(--grey3);
