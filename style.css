@@ -47,23 +47,36 @@ input,select{
   background-color: var(--offWhite);
   font-weight: bold;
 }
-input,p{
-  color:var(--grey3);
+input{
+  color:rgb(80, 80, 80);
+}
+p{
+  color:var(--oxfordBlue);
 }
 /*select[data-chosen] helps overcome select default styling issue*/
-select[data-chosen],::placeholder, option:first-of-type{
-  color:var(--grey2);
+
+option,::placeholder, option:first-of-type{
   font-size: 1rem;
   font-weight: bold;
 }
+select[data-chosen]{
+    color:var(--grey3);
+    font-size: 1rem;
+    font-weight: bold;
+  }
 select[data-chosen='yes'],select[data-chosen='no']{
-  color:var(--grey3);
+  color:rgb(80, 80, 80);
 }
-option{
+
+/* {
   color:var(--grey3);
   font-weight: bold;
   font-size: 1rem;
 }
+ */
+
+
+
 
 input:focus, select:focus{
   outline: none;
@@ -183,10 +196,11 @@ button{
   border-radius: 15px;
   padding: 12px;
   margin:10px 20px;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   justify-content: space-between;
-  max-width: 350px;
-  max-height: 250px;
+  max-width: 300px;
+  max-height: 220px;
+
 }
 .info>p{
    margin:8px;
@@ -196,6 +210,7 @@ button{
   font-weight: bold;
   color: var(--grey3);
   overflow:auto;
+  overflow-wrap: break-word;
 }
 .actions{
   display: flex;
