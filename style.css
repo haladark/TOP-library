@@ -68,16 +68,6 @@ select[data-chosen='yes'],select[data-chosen='no']{
   color:rgb(80, 80, 80);
 }
 
-/* {
-  color:var(--grey3);
-  font-weight: bold;
-  font-size: 1rem;
-}
- */
-
-
-
-
 input:focus, select:focus{
   outline: none;
   border: 2px solid var(--grey2);
@@ -181,8 +171,8 @@ button{
   border-radius: 20px;
   grid:2/2/3/3;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-auto-rows: minmax(250px, auto);
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-auto-rows: minmax(300px, auto);
   gap: 16px;
   justify-content: flex-start;
   padding:20px 8px;
@@ -198,8 +188,8 @@ button{
   margin:10px 20px;
   font-size: 1.8rem;
   justify-content: space-between;
-  max-width: 300px;
-  max-height: 220px;
+  max-width: 400px;
+  max-height: 300px;
 
 }
 .info>p{
